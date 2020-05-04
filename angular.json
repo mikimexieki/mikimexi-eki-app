@@ -124,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "mikimexieki"
+    }
+  },
+  "defaultProject": "mikimexieki",
+  "cli": {
+    "analytics": false
+  }
 }

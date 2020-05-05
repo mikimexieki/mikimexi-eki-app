@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'login-clientes', component: LoginClientesComponent },
   { path: 'login-repartidores', component: LoginRepartidoresComponent },
   { path: 'repartidores', component: RepartidoresComponent },
-  { path: 'vendedores', component: VendedoresComponent },
+  { path: 'vendedor/:rfc', component: VendedoresComponent },
   { path: 'clientes/:email', component: ClientesComponent },
   { path: '**', component: NoEncontradoComponent },
 ];

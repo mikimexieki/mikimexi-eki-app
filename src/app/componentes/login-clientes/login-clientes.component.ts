@@ -52,7 +52,7 @@ export class LoginClientesComponent implements OnInit {
         cliente => {
           if(cliente != null){
             em = cliente.email;
-            this.flashMessages.show('El correo: ' + em + ' ya esta asociado con una cuenta', {
+            this.flashMessages.show('El correo: ' + em + ' ya está asociado con una cuenta', {
               cssClass: 'alert-danger',
               timeout: 4000
             });
@@ -63,26 +63,33 @@ export class LoginClientesComponent implements OnInit {
           }
         }
       );
-
-
      }
   }
 
   login({ value, valid }: { value: Cliente, valid: boolean }) {
+   // confirm(value.email + ', ' + value.password);
     let em = '';
     this.clientesService.getClienteEmail(value.email).subscribe(
       cliente => {
-        if (cliente === null) {
-          em = cliente.email;
-          this.flashMessages.show('El correo: ' + em + ' no esta asociado con una cuenta', {
+        em = cliente.email;
+        if(em === ''){
+          this.flashMessages.show('El correo: ' + value.email + ' no está asociado con una cuenta', {
             cssClass: 'alert-danger',
             timeout: 4000
           });
-        } else {
-          this.clientesService.agregarCliente(value);
-          this.clienteForm.resetForm();
-          this.router.navigate([`clientes/email:${value.email}`]);
+        }else{
+          if(cliente.password === value.password){
+            this.router.navigate([`clientes/email:${value.email}`]);
+          }else{
+            this.flashMessages.show('Contraseña incorrecta', {
+              cssClass: 'alert-danger',
+              timeout: 4000
+            });
+          }
         }
+      },
+      error => {
+        confirm(error);
       }
     );
 

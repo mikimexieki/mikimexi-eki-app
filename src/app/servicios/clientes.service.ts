@@ -26,7 +26,6 @@ export class ClienteServicio {
 
   }
 
-
   getClientes(): Observable<Cliente[]> {
     this.clientes = this.clientesColeccion.snapshotChanges().pipe(
       map(cambios => {
@@ -44,13 +43,20 @@ export class ClienteServicio {
     return this.id;
   }
 
- 
+
   getClienteEmail(email: string) {
     this.clienteDoc = this.db.doc<Cliente>(`clientes/${email}`);
     this.cliente = this.clienteDoc.snapshotChanges().pipe(
       map(accion => {
         if (accion.payload.exists === false) {
-          return null;
+          return {
+            id: '',
+            email: '',
+            nombre: '',
+            password: '',
+            direccion: '',
+            telefono: 0
+          };
         } else {
           const datos = accion.payload.data() as Cliente;
           datos.id = accion.payload.id;

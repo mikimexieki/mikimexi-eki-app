@@ -1,9 +1,8 @@
-
-export interface Cliente {
+export interface Vendedor {
   id?: string;
+  rfc?: string;
   nombre?: string;
   email?: string;
   password?: string;
-  direccion?: string;
   telefono?: number;
 }

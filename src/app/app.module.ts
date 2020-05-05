@@ -22,6 +22,7 @@ import { LoginClientesComponent } from './componentes/login-clientes/login-clien
 import { LoginVendedoresComponent } from './componentes/login-vendedores/login-vendedores.component';
 import { LoginRepartidoresComponent } from './componentes/login-repartidores/login-repartidores.component';
 import { LoginComponent } from './componentes/login/login.component';
+import { ClienteServicio } from './servicios/clientes.service';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { LoginComponent } from './componentes/login/login.component';
     // AngularFirestoreSettingsToken,
     FlashMessagesModule.forRoot()
   ],
-  providers: [],
+  providers: [ClienteServicio],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule { }

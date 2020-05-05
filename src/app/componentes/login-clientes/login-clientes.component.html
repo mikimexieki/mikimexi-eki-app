@@ -14,7 +14,7 @@
   <flash-messages></flash-messages>
   <div class class="row">
     <div class="col-md-6">
-      <form (submit)="login()">
+      <form  #clienteFormLogin="ngForm" (ngSubmit)="login(clienteFormLogin)">
         <h3>Ingresar como cliente</h3>
         <section id="nuevoCliente">
           <div class="conteiner mt-3">
@@ -24,12 +24,19 @@
                   <div class="card-header">
                     <div class="card-body">
                       <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" name="email" class="form-control" required>
+                        <!-- <label for="email">Email</label>
+                        <input type="email" name="email"
+                        class="form-control" required
+                         [(ngModel)]="email" > -->
+                        <input type="email" name="email" class="form-control" class="form-control" #email="ngModel" [(ngModel)]="cliente.email">
                       </div>
                       <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" name="password" class="form-control" required>
+                        <input type="password"
+                        name="password"
+                        class="form-control"
+                        #password="ngModel"
+                        [(ngModel)]="cliente.password"required >
                       </div>
                     </div>
                   </div>
@@ -51,7 +58,7 @@
 
     <div class="col-6">
 
-      <form #clienteForm="ngForm" (ngSubmit)="guardar(clienteForm)">
+      <form #clienteForm="ngForm" (ngSubmit)="registrar(clienteForm)">
 
         <h3>Registrese como nuevo cliente</h3>
 

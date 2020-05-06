@@ -10,8 +10,10 @@ export class VendedorService {
 
 
   vendedorColeccion: AngularFirestoreCollection<Vendedor>;
+  tiendaColeccion: AngularFirestoreCollection<Tienda>;
   vendedorDoc: AngularFirestoreDocument<Vendedor>;
   vendedores: Observable<Vendedor[]>;
+  tiendas: Observable<Tienda[]>;
   vendedor: Observable<Vendedor>;
   subColl: AngularFirestore;
   sub: AngularFirestore;
@@ -20,11 +22,17 @@ export class VendedorService {
 
   constructor(private db: AngularFirestore) {
     this.vendedorColeccion = db.collection('vendedores', ref => ref.orderBy('nombre'));
+    this.tiendaColeccion = db.collection('tiendas', ref => ref.orderBy('nombre'));
   }
 
   agregarVendedor(vendedor: Vendedor) {
     //  this.clientesColeccion.add(cliente);
     this.vendedorColeccion.doc(vendedor.rfc).set(vendedor);
+
+  }
+
+  agregarTienda(rfc: string, value: Tienda) {
+    this.tiendaColeccion.doc(rfc).set(value);
   }
 
   getVendedores(): Observable<Vendedor[]> {
@@ -40,14 +48,22 @@ export class VendedorService {
     return this.vendedores;
   }
 
+  getTiendas(): Observable<Vendedor[]> {
+    this.tiendas = this.tiendaColeccion.snapshotChanges().pipe(
+      map(cambios => {
+        return cambios.map(accion => {
+          const datos = accion.payload.doc.data() as Tienda;
+          datos.id = accion.payload.doc.id;
+          return datos;
+        })
+      })
+    );
+    return this.tiendas;
+  }
+
   getID() {
     return this.id;
   }
-
-  agregarTienda(rfc: string, value: Tienda) {
-    this.vendedorColeccion.doc(rfc).collection('tiendas').doc(rfc).set(value);
-  }
-
 
   getVendedorWithRFC(rfc: string) {
     this.vendedorDoc = this.db.doc<Vendedor>(`vendedores/${rfc}`);

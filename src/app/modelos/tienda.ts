@@ -3,5 +3,5 @@ export interface Tienda{
   nombre?: string;
   horario?: string;
   direccion?: string;
-  tel?: string;
+  telefono?: number;
 }

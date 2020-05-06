@@ -10,7 +10,7 @@ import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-vendedores',
   templateUrl: './vendedores.component.html',
-  styleUrls: ['./vendedores.component.css']
+    styleUrls: ['./vendedores.component.css']
 })
 export class VendedoresComponent implements OnInit {
 
@@ -23,7 +23,7 @@ export class VendedoresComponent implements OnInit {
     nombre: '',
     horario: '',
     direccion: '',
-    tel: ''
+    telefono: 0
   }
 
   @ViewChild('tiendaAdd') tiendaAdd: NgForm;
@@ -43,6 +43,7 @@ export class VendedoresComponent implements OnInit {
     );
   }
 
+
   agregar({ value, valid }: { value: Tienda, valid: boolean }) {
     if (!valid) {
       this.flashMessages.show('Por favor llena el formulario coretamente', {
@@ -53,17 +54,8 @@ export class VendedoresComponent implements OnInit {
     else {
       this.flashMessages.show('La tienda ha sido agregada',  { cssClass: 'alert-success', timeout: 4000});
       this.vendedorService.agregarTienda(this.rfc, value);
-      // this.tiendaService.agregarTienda(this.rfc, value);
       this.tiendaAdd.resetForm();
     }
-    // this.tiendaService.agregarTienda(this.rfc,{
-    //   id: 'dany',
-    //   nombre: 'carne',
-    //   horario: '9:00',
-    //   direccion: 'caoba',
-    //   tel: '322'
-    // });
-
   }
 
 }

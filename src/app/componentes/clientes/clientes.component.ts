@@ -3,6 +3,8 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClienteServicio } from 'src/app/servicios/clientes.service';
 import { Cliente } from 'src/app/modelos/cliente';
+import { VendedorService } from '../../servicios/vendedor.services';
+import { Tienda } from '../../modelos/tienda';
 
 @Component({
   selector: 'app-clientes',
@@ -14,14 +16,16 @@ export class ClientesComponent implements OnInit {
   constructor(private flashMessages: FlashMessagesService,
               private router: Router,
               private route: ActivatedRoute,
-              private clientesServicio: ClienteServicio) {
+              private clientesServicio: ClienteServicio,
+              private vendedorService: VendedorService) { }
 
-  }
 
 
   clientes: Cliente[];
-  s : string[];
   cliente : Cliente;
+  s : string[];
+
+  tiendas: Tienda[];
 
   email: string;
   ngOnInit(): void {
@@ -33,6 +37,13 @@ export class ClientesComponent implements OnInit {
         this.cliente = cliente;
       }
     );
+    this.vendedorService.getTiendas().subscribe(
+      tienda => {
+        this.tiendas = tienda;
+        console.log(tienda);
+      }
+    );
   }
+
 
 }

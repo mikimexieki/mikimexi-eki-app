@@ -1,39 +1,44 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Cliente } from 'src/app/modelos/cliente';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ClienteServicio } from '../../servicios/clientes.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login-clientes',
   templateUrl: './login-clientes.component.html',
   styleUrls: ['./login-clientes.component.css']
 })
+
 export class LoginClientesComponent implements OnInit {
+
+  email: string;
+  password: string;
 
   cliente: Cliente = {
     nombre: '',
     email: '',
     password: '',
     telefono : 0
-  }
+  };
 
-  email: string;
-  passwors: string;
+  clientes: Cliente[];
 
   id: string;
 
+  @ViewChild('clienteForm') clienteForm: NgForm;
   constructor(private flashMessages: FlashMessagesService,
-    private router: Router,
-    private route: ActivatedRoute) { }
+              private router: Router,
+              private route: ActivatedRoute,
+              private clientesService: ClienteServicio ) { }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.params['id'];
-    // this.clientesService.getCliente(this.id).subscribe(cliente => {
-    //   this.cliente = cliente;
-    // });
   }
 
-  guardar({ value, valid }: { value: Cliente, valid: boolean }) {
+  registrar({ value, valid }: { value: Cliente, valid: boolean }) {
+
+    console.log(value.email + ', ' + value.password);
     if (!valid) {
       this.flashMessages.show('Por favor llena el formulario coretamente', {
         cssClass: 'alert-danger',
@@ -41,17 +46,54 @@ export class LoginClientesComponent implements OnInit {
       });
     }
     else {
-      value.id = this.id;
-      //modificar el cliente
-      // this.clientesService.modificarCliente(value);
-      this.router.navigate(['/clientes']);
-    }
+      // Agregar nuevo cliente
+      let em = '';
+      this.clientesService.getClienteEmail(value.email).subscribe(
+        cliente => {
+          if(cliente != null){
+            em = cliente.email;
+            this.flashMessages.show('El correo: ' + em + ' ya está asociado con una cuenta', {
+              cssClass: 'alert-danger',
+              timeout: 4000
+            });
+          } else {
+            this.clientesService.agregarCliente(value);
+            this.clienteForm.resetForm();
+            this.router.navigate([`clientes/email:${value.email}`]);
+          }
+        }
+      );
+     }
   }
 
-  login(){
-    this.router.navigate(['/clientes']);
-  }
+  login({ value, valid }: { value: Cliente, valid: boolean }) {
+   // confirm(value.email + ', ' + value.password);
+    let em = '';
+    this.clientesService.getClienteEmail(value.email).subscribe(
+      cliente => {
+        em = cliente.email;
+        if(em === ''){
+          this.flashMessages.show('El correo: ' + value.email + ' no está asociado con una cuenta', {
+            cssClass: 'alert-danger',
+            timeout: 4000
+          });
+        }else{
+          if(cliente.password === value.password){
+            this.router.navigate([`clientes/email:${value.email}`]);
+          }else{
+            this.flashMessages.show('Contraseña incorrecta', {
+              cssClass: 'alert-danger',
+              timeout: 4000
+            });
+          }
+        }
+      },
+      error => {
+        confirm(error);
+      }
+    );
 
+  }
   // eliminar() {
   //   if (confirm('¿Seguro de que desea eliminar el cliente?')) {
 

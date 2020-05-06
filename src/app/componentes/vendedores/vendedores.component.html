@@ -1,1 +1,43 @@
-<p>vendedores works!</p>
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+  <div class="container">
+    <h1 class="display-3">Hola, {{vendedor.nombre}}!</h1>
+    <p>This is a template for a simple marketing or informational website. It includes a large callout called a
+      jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.
+    </p>
+
+  </div>
+</div>
+
+<div class="container">
+
+<flash-messages></flash-messages>
+  <form  #tiendaAdd="ngForm" (ngSubmit)="agregar(tiendaAdd)">
+    <div class="form-group">
+      <label for="nombre">Nombre</label>
+      <input type="text"  name="nombre" class="form-control" #nombre="ngModel"
+      placeholder="Abarrotes De la Esquina" required [(ngModel)]="tienda.nombre">
+    </div>
+    <div class="form-group">
+      <label for="horario">Horario</label>
+      <input type="text" name="horario" class="form-control" #horario="ngModel"
+      placeholder="8:00 - 20:00" required [(ngModel)]="tienda.horario">
+    </div>
+    <div class="form-group">
+      <label for="direccion">Direccion</label>
+      <input type="text" name="direccion" class="form-control"  #direccion="ngModel"
+      placeholder="Calle ### Colonia" required [(ngModel)]="tienda.direccion">
+    </div>
+    <div class="form-group">
+      <label for="telefono">Telefono</label>
+      <input type="tel" name="telefono" class="form-control" #tel="ngModel"
+      placeholder="311 111 22 333" required [(ngModel)]="tienda.telefono">
+    </div>
+    <section id="actions" class="py-4 mb-4 bg-light">
+      <button type="submit" class="btn btn-success btn-block">
+        <i class="fas fa-check"></i> Agregar Tienda
+      </button>
+    </section>
+
+  </form>
+</div>

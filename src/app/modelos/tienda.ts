@@ -1,9 +1,7 @@
-
-export interface Cliente {
+export interface Tienda{
   id?: string;
   nombre?: string;
-  email?: string;
-  password?: string;
+  horario?: string;
   direccion?: string;
   telefono?: number;
 }

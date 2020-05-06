@@ -47,12 +47,10 @@ export class LoginClientesComponent implements OnInit {
     }
     else {
       // Agregar nuevo cliente
-      let em = '';
       this.clientesService.getClienteEmail(value.email).subscribe(
         cliente => {
-          if(cliente != null){
-            em = cliente.email;
-            this.flashMessages.show('El correo: ' + em + ' ya está asociado con una cuenta', {
+          if(cliente.email === value.email){
+            this.flashMessages.show('El correo: ' + value.email + ' ya está asociado con una cuenta', {
               cssClass: 'alert-danger',
               timeout: 4000
             });

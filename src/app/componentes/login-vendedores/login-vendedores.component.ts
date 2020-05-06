@@ -88,7 +88,7 @@ export class LoginVendedoresComponent implements OnInit {
           } else {
             this.vendedorService.agregarVendedor(value);
             this.vendedorForm.resetForm();
-            this.router.navigate([`vendedores/rfc:${value.rfc}`]);
+            this.router.navigate([`vendedor/rfc:${value.rfc}`]);
           }
         }
       );

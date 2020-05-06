@@ -78,10 +78,10 @@ export class LoginVendedoresComponent implements OnInit {
       console.log(value);
       this.vendedorService.getVendedorWithRFC(value.rfc).subscribe(
         vendedor => {
-          em = vendedor.email;
-          if (em === value.email) {
-            em = vendedor.email;
-            this.flashMessages.show('El correo: ' + em + ' ya está asociado con una cuenta', {
+          em = vendedor.rfc;
+          if (em === value.rfc) {
+            em = vendedor.rfc;
+            this.flashMessages.show('El RFC: ' + em + ' ya está asociado con una cuenta', {
               cssClass: 'alert-danger',
               timeout: 4000
             });

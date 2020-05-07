@@ -1,0 +1,38 @@
+.foot{
+    /*position: absolute;*/
+    height: 100px;
+    left: 0%;
+    right: 0%;
+    bottom: 0px;
+
+    background: #212121
+}
+
+.container p{
+    position: absolute;
+    width: 237px;
+    height: 44px;
+    left: calc(50% - 237px/2 + 28.5px);
+    top: 20px;
+
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 44px;
+/* identical to box height */
+
+    text-align: center;
+
+color: #FFFFFF;
+}
+
+/*img{
+    position: absolute;
+    width: 43px;
+    height: 43px;
+    left: calc(50% - 43px/2 - 125.5px);
+    top: 61px;
+
+    /*background: url(Logo.png);
+}*/

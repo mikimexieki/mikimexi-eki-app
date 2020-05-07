@@ -4,6 +4,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ClienteServicio } from '../../servicios/clientes.service';
 import { NgForm } from '@angular/forms';
+import { LoginService } from '../../servicios/login.service';
 
 @Component({
   selector: 'app-login-clientes',
@@ -31,7 +32,8 @@ export class LoginClientesComponent implements OnInit {
   constructor(private flashMessages: FlashMessagesService,
               private router: Router,
               private route: ActivatedRoute,
-              private clientesService: ClienteServicio ) { }
+              private clientesService: ClienteServicio,
+              private loginService: LoginService ) { }
 
   ngOnInit(): void {
   }
@@ -46,21 +48,33 @@ export class LoginClientesComponent implements OnInit {
       });
     }
     else {
-      // Agregar nuevo cliente
-      this.clientesService.getClienteEmail(value.email).subscribe(
-        cliente => {
-          if(cliente.email === value.email){
-            this.flashMessages.show('El correo: ' + value.email + ' ya está asociado con una cuenta', {
-              cssClass: 'alert-danger',
-              timeout: 4000
-            });
-          } else {
-            this.clientesService.agregarCliente(value);
-            this.clienteForm.resetForm();
-            this.router.navigate([`clientes/email:${value.email}`]);
-          }
-        }
-      );
+      // // Agregar nuevo cliente
+      // this.clientesService.getClienteEmail(value.email).subscribe(
+      //   cliente => {
+      //     if(cliente.email === value.email){
+      //       this.flashMessages.show('El correo: ' + value.email + ' ya está asociado con una cuenta', {
+      //         cssClass: 'alert-danger',
+      //         timeout: 4000
+      //       });
+      //     } else {
+      //       this.clientesService.agregarCliente(value);
+      //       this.loginService.registrarse(value.email, value.password);
+      //       this.clienteForm.resetForm();
+      //       this.router.navigate([`clientes/email:${value.email}`]);
+      //     }
+      //   }
+      // );
+      this.clientesService.agregarCliente(value);
+      this.loginService.registrarse(value.email, value.password)
+        .then(res => {
+          this.router.navigate([`clientes/email:${value.email}`]);
+        })
+        .catch(error => {
+          this.flashMessages.show(error.message, {
+            cssClass: 'alert-danger',
+            timeout: 4000
+          });
+        });
      }
   }
 

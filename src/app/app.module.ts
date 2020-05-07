@@ -25,6 +25,7 @@ import { LoginComponent } from './componentes/login/login.component';
 import { ClienteServicio } from './servicios/clientes.service';
 import { VendedorService } from './servicios/vendedor.services';
 import { TiendaService } from './servicios/tienda.services';
+import { LoginService } from './servicios/login.service';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { TiendaService } from './servicios/tienda.services';
   ],
   providers: [ClienteServicio,
     VendedorService,
-    TiendaService],
+    TiendaService,
+    LoginService],
 
   bootstrap: [AppComponent]
 })

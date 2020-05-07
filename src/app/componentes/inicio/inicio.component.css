@@ -1,12 +1,26 @@
-/*.container{
-    position: absolute;
-    height: 420px;
-    left: 0%;
-    right: 0%;
-    top: 609px;
-}*/
+/*.c2{
+    background: rgba(3, 152, 158, 0.5);
+}
 
 .card{
     position: absolute;
     top: 162px;
+}*/
+
+/*.ima{
+    height: 522px;
+    left: 37.5%;
+    right: 0%;
+    top: 0px;
+
+    background: url(mapa.jpg);
+}*/
+/*.rep{
+    background: rgba(3, 152, 158, 0.5);
 }
+.clien{
+    background: rgba(3, 152, 158, 0.5);
+}
+.ven{
+    background: rgba(3, 152, 158, 0.5);
+}*/

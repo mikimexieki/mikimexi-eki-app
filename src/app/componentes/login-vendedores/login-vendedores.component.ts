@@ -50,7 +50,8 @@ export class LoginVendedoresComponent implements OnInit {
           });
         } else {
           if (vendedor.password === value.password) {
-            this.router.navigate([`vendedor/rfc:${value.rfc}`]);
+             this.loginService.login(vendedor.email, value.password);
+             this.router.navigate([`vendedor/rfc:${value.rfc}`]);
           } else {
             this.flashMessages.show('Contraseña incorrecta', {
               cssClass: 'alert-danger',
@@ -74,28 +75,6 @@ export class LoginVendedoresComponent implements OnInit {
         timeout: 4000
       });
     }
-    // else {
-    //   // Agregar nuevo vendedor
-    //   let em = '';
-    //   console.log(value);
-    //   this.vendedorService.getVendedorWithRFC(value.rfc).subscribe(
-    //     vendedor => {
-    //       em = vendedor.rfc;
-    //       if (em === value.rfc) {
-    //         em = vendedor.rfc;
-    //         this.flashMessages.show('El RFC: ' + em + ' ya está asociado con una cuenta', {
-    //           cssClass: 'alert-danger',
-    //           timeout: 4000
-    //         });
-    //       } else {
-    //         this.vendedorService.agregarVendedor(value);
-    //         this.loginService.registrarse(value.email,value.password);
-    //         this.vendedorForm.resetForm();
-    //         this.router.navigate([`vendedor/rfc:${value.rfc}`]);
-    //       }
-    //     }
-    //   );
-    // }
     else{
       this.vendedorService.agregarVendedor(value);
       this.loginService.registrarse(value.email, value.password)

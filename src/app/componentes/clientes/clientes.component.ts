@@ -5,6 +5,9 @@ import { ClienteServicio } from 'src/app/servicios/clientes.service';
 import { Cliente } from 'src/app/modelos/cliente';
 import { VendedorService } from '../../servicios/vendedor.services';
 import { Tienda } from '../../modelos/tienda';
+import { LoginService } from '../../servicios/login.service';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { ChatService } from '../../servicios/chat.service';
 
 @Component({
   selector: 'app-clientes',
@@ -13,12 +16,15 @@ import { Tienda } from '../../modelos/tienda';
 })
 export class ClientesComponent implements OnInit {
 
-  constructor(private flashMessages: FlashMessagesService,
-              private router: Router,
-              private route: ActivatedRoute,
+  userID: string;
+  nombre: string;
+  mensaje: string = '';
+  constructor(private route: ActivatedRoute,
               private clientesServicio: ClienteServicio,
-              private vendedorService: VendedorService) { }
-
+              private vendedorService: VendedorService,
+              private ls: LoginService
+              ) {
+                            }
 
 
   clientes: Cliente[];
@@ -43,6 +49,11 @@ export class ClientesComponent implements OnInit {
         console.log(tienda);
       }
     );
+  }
+
+  enviarMensaje(){
+    console.log(this.mensaje);
+
   }
 
 

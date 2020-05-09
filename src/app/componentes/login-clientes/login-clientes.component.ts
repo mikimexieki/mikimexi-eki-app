@@ -5,7 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ClienteServicio } from '../../servicios/clientes.service';
 import { NgForm } from '@angular/forms';
 import { LoginService } from '../../servicios/login.service';
-
+import { config } from 'rxjs';
 @Component({
   selector: 'app-login-clientes',
   templateUrl: './login-clientes.component.html',
@@ -16,6 +16,7 @@ export class LoginClientesComponent implements OnInit {
 
   email: string;
   password: string;
+  user : any;
 
   cliente: Cliente = {
     nombre: '',
@@ -48,25 +49,9 @@ export class LoginClientesComponent implements OnInit {
       });
     }
     else {
-      // // Agregar nuevo cliente
-      // this.clientesService.getClienteEmail(value.email).subscribe(
-      //   cliente => {
-      //     if(cliente.email === value.email){
-      //       this.flashMessages.show('El correo: ' + value.email + ' ya está asociado con una cuenta', {
-      //         cssClass: 'alert-danger',
-      //         timeout: 4000
-      //       });
-      //     } else {
-      //       this.clientesService.agregarCliente(value);
-      //       this.loginService.registrarse(value.email, value.password);
-      //       this.clienteForm.resetForm();
-      //       this.router.navigate([`clientes/email:${value.email}`]);
-      //     }
-      //   }
-      // );
-      this.clientesService.agregarCliente(value);
       this.loginService.registrarse(value.email, value.password)
         .then(res => {
+          this.clientesService.agregarCliente(value);
           this.router.navigate([`clientes/email:${value.email}`]);
         })
         .catch(error => {
@@ -79,7 +64,6 @@ export class LoginClientesComponent implements OnInit {
   }
 
   login({ value, valid }: { value: Cliente, valid: boolean }) {
-   // confirm(value.email + ', ' + value.password);
     let em = '';
     this.clientesService.getClienteEmail(value.email).subscribe(
       cliente => {
@@ -90,14 +74,16 @@ export class LoginClientesComponent implements OnInit {
             timeout: 4000
           });
         }else{
-          if(cliente.password === value.password){
-            this.router.navigate([`clientes/email:${value.email}`]);
-          }else{
-            this.flashMessages.show('Contraseña incorrecta', {
-              cssClass: 'alert-danger',
-              timeout: 4000
+          this.loginService.login(value.email, value.password)
+            .then(res => {
+              this.router.navigate([`clientes/email:${value.email}`]);
+            })
+            .catch(error => {
+              this.flashMessages.show(error.message, {
+                cssClass: 'alert-danger',
+                timeout: 4000
+              });
             });
-          }
         }
       },
       error => {
@@ -106,13 +92,5 @@ export class LoginClientesComponent implements OnInit {
     );
 
   }
-  // eliminar() {
-  //   if (confirm('¿Seguro de que desea eliminar el cliente?')) {
-
-  //     // this.clientesService.eliminarCliente(this.cliente);
-  //     this.router.navigate(['/']);
-
-  //   }
-  // }
 
 }

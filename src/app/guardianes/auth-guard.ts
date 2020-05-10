@@ -18,6 +18,31 @@ export class AuthGuard implements CanActivate {
       map(auth => {
         if (!auth) {
           this.router.navigate(['/inicio']);
+          console.log('No estas logeado');
+          return false;
+        } else {
+          return true;
+        }
+      })
+    );
+  }
+}
+
+@Injectable()
+export class AuthGuardrEP implements CanActivate {
+
+
+  constructor(
+    private router: Router,
+    private afAuth: AngularFireAuth
+  ) { }
+
+  canActivate(): Observable<boolean> {
+    return this.afAuth.authState.pipe(
+      map(auth => {
+        if (!auth) {
+          this.router.navigate(['/inicio']);
+          console.log('No estas logeado');
           return false;
         } else {
           return true;

@@ -50,8 +50,9 @@ export class LoginVendedoresComponent implements OnInit {
           });
         } else {
           if (vendedor.password === value.password) {
-             this.loginService.login(vendedor.email, value.password);
-             this.router.navigate([`vendedor/rfc:${value.rfc}`]);
+             this.loginService.login(vendedor.email, value.password).then(res =>{
+               this.router.navigate([`vendedor/rfc:${value.rfc}`]);}
+             ).catch(error => console.log(error));
           } else {
             this.flashMessages.show('Contraseña incorrecta', {
               cssClass: 'alert-danger',

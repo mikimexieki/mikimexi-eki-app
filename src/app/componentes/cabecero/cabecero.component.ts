@@ -27,8 +27,10 @@ export class CabeceroComponent implements OnInit {
   }
 
   logout() {
-    this.loginService.logout();
-    this.isLoggedIn = false;
-    this.router.navigate(['/']);
+    if(confirm('¿Desea salir de su cuenta?')){
+      this.loginService.logout();
+      this.isLoggedIn = false;
+      this.router.navigate(['/']);
+    }
   }
 }

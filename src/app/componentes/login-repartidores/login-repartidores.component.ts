@@ -44,15 +44,15 @@ export class LoginRepartidoresComponent implements OnInit {
     }else{
       let em = '';
       this.repartidorServicio.getClienteLicencia(value.licencia).subscribe(
-        cliente => {
-          em = cliente.licencia;
+        rep => {
+          em = rep.licencia;
           if (em === '') {
             this.flashMessages.show('La licencia: ' + value.licencia + ' no está asociado con una cuenta', {
               cssClass: 'alert-danger',
               timeout: 4000
             });
           } else {
-            this.loginService.login(value.email, value.password)
+            this.loginService.login(rep.email, value.password)
               .then(res => {
                 this.router.navigate([`repartidores/id:${value.licencia}`]);
               })

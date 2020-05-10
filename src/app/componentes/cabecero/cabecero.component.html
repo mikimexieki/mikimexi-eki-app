@@ -5,6 +5,7 @@
   <ul>
     <li><a href="#Inicio">Inicio</a></li>
     <li><a href="#Acerca de">Acerca de</a></li>
+    <!-- Esto fue lo que agregué  -->
     <li *ngIf="!isLoggedIn"><a href="inicio#unete">Únete a Mikimexi Eki</a></li>
     <li *ngIf="isLoggedIn" class="nav-item">
       <a style="cursor: pointer" (click)="logout()" class="nav-link">

@@ -1,10 +1,11 @@
 <!-- As a link -->
 <nav class="navbar">
-  <img class="i" src="assets/images/Logo.png">
+  <img class="i" src="assets/Imagenes/Logo.png">
   <h1 class="navbar-brand" href="#">Mikimexi Eki</h1>
   <ul>
     <li><a href="#Inicio">Inicio</a></li>
     <li><a href="#Acerca de">Acerca de</a></li>
+
     <!-- Esto fue lo que agregué  -->
     <li *ngIf="!isLoggedIn"><a href="inicio#unete">Únete a Mikimexi Eki</a></li>
     <li *ngIf="isLoggedIn" class="nav-item">

@@ -25,6 +25,7 @@
             <thead class="thead-dark">
               <tr>
                 <th>Nombre</th>
+
                 <th>direccion</th>
                 <th>tel</th>
                 <th></th>
@@ -37,7 +38,7 @@
                 <td>{{tienda.direccion}} </td>
                 <td>{{tienda.telefono}} </td>
                 <td>
-                  <a  class="btn btn-success">
+                  <a class="btn btn-success">
                     <i class="fas fa-shopping-cart"></i> Hacer Pedido
                   </a>
                 </td>
@@ -46,6 +47,24 @@
           </table>
         </div>
       </div>
+      <!-- <div class="col-3">
+        <div class="chat-window">
+          <h1>Chat</h1>
+          <h5>{{cliente.nombre}}</h5>
+          <div class="app-mensajes" id="app-mensajes">
+            <div class="text-right">
+              <span class="badge badge-primary">Dany</span>
+              <p>Este es un mensaje</p>
+            </div>
+            <div>
+              <span class="badge badge-success">Dany</span>
+              <p>Este es un mensaje</p>
+            </div>
+          </div>
+          <input type="text" name="mensaje" [(ngModel)]="mensaje" placeholder="Enviar mensaje" class="form-control"
+            (keyup.enter)="enviarMensaje()">
+        </div>
+      </div> -->
     </div>
   </div>
 </section>

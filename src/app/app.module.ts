@@ -25,6 +25,10 @@ import { LoginComponent } from './componentes/login/login.component';
 import { ClienteServicio } from './servicios/clientes.service';
 import { VendedorService } from './servicios/vendedor.services';
 import { TiendaService } from './servicios/tienda.services';
+import { LoginService } from './servicios/login.service';
+import { ChatService } from './servicios/chat.service';
+import { AuthGuard } from './guardianes/auth-guard';
+import { RepartidorServicio } from './servicios/repartidor.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +43,7 @@ import { TiendaService } from './servicios/tienda.services';
     LoginClientesComponent,
     LoginVendedoresComponent,
     LoginRepartidoresComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +57,11 @@ import { TiendaService } from './servicios/tienda.services';
   ],
   providers: [ClienteServicio,
     VendedorService,
-    TiendaService],
+    TiendaService,
+    LoginService,
+    ChatService,
+    RepartidorServicio,
+    AuthGuard],
 
   bootstrap: [AppComponent]
 })

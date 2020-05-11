@@ -4,6 +4,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 import { VendedorService } from '../../servicios/vendedor.services';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { LoginService } from '../../servicios/login.service';
 
 @Component({
   selector: 'app-login-vendedores',
@@ -30,7 +31,8 @@ export class LoginVendedoresComponent implements OnInit {
   constructor(private flashMessages: FlashMessagesService,
               private vendedorService: VendedorService,
               private router: Router,
-              private route: ActivatedRoute,) { }
+              private route: ActivatedRoute,
+              private loginService: LoginService) { }
 
   ngOnInit(): void {
   }
@@ -48,7 +50,9 @@ export class LoginVendedoresComponent implements OnInit {
           });
         } else {
           if (vendedor.password === value.password) {
-            this.router.navigate([`vendedor/rfc:${value.rfc}`]);
+             this.loginService.login(vendedor.email, value.password).then(res =>{
+               this.router.navigate([`vendedor/rfc:${value.rfc}`]);}
+             ).catch(error => console.log(error));
           } else {
             this.flashMessages.show('Contraseña incorrecta', {
               cssClass: 'alert-danger',
@@ -65,34 +69,27 @@ export class LoginVendedoresComponent implements OnInit {
 
   registrar({ value, valid }: { value: Vendedor, valid: boolean }) {
 
-    console.log(value.email + ', ' + value.rfc);
+    // console.log(value.email + ', ' + value.rfc);
     if (!valid) {
       this.flashMessages.show('Por favor llena el formulario coretamente', {
         cssClass: 'alert-danger',
         timeout: 4000
       });
     }
-    else {
-      // Agregar nuevo vendedor
-      let em = '';
-      console.log(value);
-      this.vendedorService.getVendedorWithRFC(value.rfc).subscribe(
-        vendedor => {
-          em = vendedor.rfc;
-          if (em === value.rfc) {
-            em = vendedor.rfc;
-            this.flashMessages.show('El RFC: ' + em + ' ya está asociado con una cuenta', {
-              cssClass: 'alert-danger',
-              timeout: 4000
-            });
-          } else {
-            this.vendedorService.agregarVendedor(value);
-            this.vendedorForm.resetForm();
-            this.router.navigate([`vendedor/rfc:${value.rfc}`]);
-          }
-        }
-      );
+    else{
+      this.vendedorService.agregarVendedor(value);
+      this.loginService.registrarse(value.email, value.password)
+        .then(res => {
+          this.router.navigate([`vendedor/rfc:${value.rfc}`]);
+        })
+        .catch(error => {
+          this.flashMessages.show(error.message, {
+            cssClass: 'alert-danger',
+            timeout: 4000
+          });
+        });
     }
+
 
   }
 

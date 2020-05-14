@@ -32,7 +32,7 @@ export class VendedorService {
   }
 
   agregarTienda(rfc: string, value: Tienda) {
-    this.tiendaColeccion.doc(rfc).set(value);
+    this.tiendaColeccion.doc(rfc).set(value).then(resp =>console.log(resp));
   }
 
   getVendedores(): Observable<Vendedor[]> {

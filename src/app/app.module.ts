@@ -26,7 +26,6 @@ import { ClienteServicio } from './servicios/clientes.service';
 import { VendedorService } from './servicios/vendedor.services';
 import { TiendaService } from './servicios/tienda.services';
 import { LoginService } from './servicios/login.service';
-import { ChatService } from './servicios/chat.service';
 import { AuthGuard } from './guardianes/auth-guard';
 import { RepartidorServicio } from './servicios/repartidor.service';
 
@@ -59,7 +58,6 @@ import { RepartidorServicio } from './servicios/repartidor.service';
     VendedorService,
     TiendaService,
     LoginService,
-    ChatService,
     RepartidorServicio,
     AuthGuard],
 

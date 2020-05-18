@@ -52,6 +52,7 @@ export class VendedoresComponent implements OnInit {
       });
     }
     else {
+      value.id = this.rfc;
       this.flashMessages.show('La tienda ha sido agregada',  { cssClass: 'alert-success', timeout: 4000});
       this.vendedorService.agregarTienda(this.rfc, value);
       this.tiendaAdd.resetForm();

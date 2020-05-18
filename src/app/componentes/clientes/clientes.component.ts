@@ -53,8 +53,6 @@ export class ClientesComponent implements OnInit {
 
   enviarMensaje(){
     console.log(this.mensaje);
-
   }
-
 
 }

@@ -1,26 +1,99 @@
-
-
-
-
-/*.card{
+div#principal{
+    margin: auto;
+    width: 1350px;
+    height: 450px;
+    background:rgb(0, 152, 158);
+}
+div#texto{
+    float: left;
+    position: relative;
+    width: 337px;
+    height: 450px;
+}
+div#texto a{
     position: absolute;
+    color: #FFFFFF;
+    border-color: rgb(255, 146, 70);;
+    background: rgb(255, 146, 70);
+}
+div#posicion{
+    position: absolute;
+    width: 168;
+    height: 200;
+    left: 150px;
+    top: 120px;
+}
+
+
+div#posicion h1{
+    width: 276px;
+    height: 88px;
+    left: calc(50% - 276px/2 + 0.12px);
     top: 162px;
+
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 44px;
+    text-align: center;
+
+    color: #FFFFFF;
+}
+div#imag{
+    position: relative;
+    float: right;
+    width: 675px;
+    height: 450px;
+}
+div#imag img{
+    position: relative;
+    float: right;
+    width: 675px;
+    height: 450px;
+}
+
+div#tarjetas{
+    height: 310px;
+}
+
+
+
+div#video{
+    margin: auto;
+    width: 1140px;
+    height: 450px;
+    left: 2050px;
+    top: 2050px;
+    background:rgb(0, 152, 158);
+
+}
+div#video1{
+    /*margin: auto;
+    width: 1140px;
+    height: 450px;
+    left: 2050px;
+    top: 2050px;*/
+    background:rgb(0, 152, 158);
+
+}
+
+/*div#tarvid{
+    width: 380px;
+    height: 340px;
+}
+div#vid1{
+    width: 350px;
+    height: 340px;
 }*/
 
-/*.ima{
-    height: 522px;
-    left: 37.5%;
-    right: 0%;
-    top: 0px;
+div#Titulo h1{
+    text-align: center;
+    color: #FFFFFF;
 
-    background: url(mapa.jpg);
-}*/
-/*.rep{
-    background: rgba(3, 152, 158, 0.5);
 }
-.clien{
-    background: rgba(3, 152, 158, 0.5);
-}
-.ven{
-    background: rgba(3, 152, 158, 0.5);
+
+
+/*div#titulo{
+    
 }*/

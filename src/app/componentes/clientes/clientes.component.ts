@@ -7,7 +7,7 @@ import { VendedorService } from '../../servicios/vendedor.services';
 import { Tienda } from '../../modelos/tienda';
 import { LoginService } from '../../servicios/login.service';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { ChatService } from '../../servicios/chat.service';
+
 
 @Component({
   selector: 'app-clientes',

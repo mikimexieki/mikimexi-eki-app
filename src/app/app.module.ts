@@ -26,9 +26,11 @@ import { ClienteServicio } from './servicios/clientes.service';
 import { VendedorService } from './servicios/vendedor.services';
 import { TiendaService } from './servicios/tienda.services';
 import { LoginService } from './servicios/login.service';
-import { ChatService } from './servicios/chat.service';
 import { AuthGuard } from './guardianes/auth-guard';
 import { RepartidorServicio } from './servicios/repartidor.service';
+
+import { DescargaAppComponent } from './componentes/descarga-app/descarga-app.component';
+import { AcercaDeComponent } from './componentes/acerca-de/acerca-de.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { RepartidorServicio } from './servicios/repartidor.service';
     LoginVendedoresComponent,
     LoginRepartidoresComponent,
     LoginComponent,
+    DescargaAppComponent,
+    AcercaDeComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +63,6 @@ import { RepartidorServicio } from './servicios/repartidor.service';
     VendedorService,
     TiendaService,
     LoginService,
-    ChatService,
     RepartidorServicio,
     AuthGuard],
 

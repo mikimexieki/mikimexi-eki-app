@@ -8,6 +8,7 @@ import { InicioComponent } from './componentes/inicio/inicio.component';
 import { LoginVendedoresComponent } from './componentes/login-vendedores/login-vendedores.component';
 import { LoginClientesComponent } from './componentes/login-clientes/login-clientes.component';
 import { LoginRepartidoresComponent } from './componentes/login-repartidores/login-repartidores.component';
+import { AcercaDeComponent } from './componentes/acerca-de/acerca-de.component';
 import { AuthGuard } from './guardianes/auth-guard';
 
 
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'login-vendedores', component: LoginVendedoresComponent },
   { path: 'login-clientes', component: LoginClientesComponent },
   { path: 'login-repartidores', component: LoginRepartidoresComponent },
+  { path: 'acerca-de', component: AcercaDeComponent },
   { path: 'repartidores/:id', component: RepartidoresComponent, canActivate: [AuthGuard]},
   { path: 'vendedor/:rfc', component: VendedoresComponent, canActivate: [AuthGuard] },
   { path: 'clientes/:email', component: ClientesComponent, canActivate: [AuthGuard] },

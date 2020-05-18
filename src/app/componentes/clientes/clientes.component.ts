@@ -8,6 +8,7 @@ import { Tienda } from '../../modelos/tienda';
 import { LoginService } from '../../servicios/login.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 
+
 @Component({
   selector: 'app-clientes',
   templateUrl: './clientes.component.html',

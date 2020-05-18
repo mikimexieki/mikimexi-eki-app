@@ -29,6 +29,9 @@ import { LoginService } from './servicios/login.service';
 import { AuthGuard } from './guardianes/auth-guard';
 import { RepartidorServicio } from './servicios/repartidor.service';
 
+import { DescargaAppComponent } from './componentes/descarga-app/descarga-app.component';
+import { AcercaDeComponent } from './componentes/acerca-de/acerca-de.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +46,8 @@ import { RepartidorServicio } from './servicios/repartidor.service';
     LoginVendedoresComponent,
     LoginRepartidoresComponent,
     LoginComponent,
+    DescargaAppComponent,
+    AcercaDeComponent,
   ],
   imports: [
     BrowserModule,

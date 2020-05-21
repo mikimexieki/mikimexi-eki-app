@@ -2,21 +2,49 @@ div#principal{
     margin: auto;
     width: 1350px;
     height: 450px;
-    background:rgb(0, 152, 158);
+    background:rgb(255,255,255);
 }
-div#texto{
+div#carouselExampleControls{
+    margin: auto;
+    width: 800px;
+    height: 480px;
+}
+/*div#texto{
     float: left;
     position: relative;
     width: 337px;
     height: 450px;
-}
-div#texto a{
-    position: absolute;
+}*/
+div#btn a{
     color: #FFFFFF;
     border-color: rgb(255, 146, 70);;
     background: rgb(255, 146, 70);
 }
-div#posicion{
+div#btn h5{
+    color: rgb(0, 152, 158);
+}
+
+
+div#btn2 h5{
+    color: rgb(4, 42, 68);
+    
+}
+
+div#btn2 a{
+    color: #FFFFFF;
+    border-color: rgb(255, 146, 70);;
+    background: rgb(255, 146, 70);
+}
+div#btn3 h5{
+    color: rgb(0,0,0);
+}
+div#btn3 a{
+    color: #FFFFFF;
+    border-color: rgb(255, 146, 70);;
+    background: rgb(255, 146, 70);
+}
+
+/*div#posicion{
     position: absolute;
     width: 168;
     height: 200;
@@ -52,9 +80,14 @@ div#imag img{
     width: 675px;
     height: 450px;
 }
-
+*/
+div#tarjetas1{
+    height: 400px;
+    background: rgb(0, 152, 158);
+}
 div#tarjetas{
     height: 310px;
+    background: rgb(0, 152, 158);
 }
 
 
@@ -65,7 +98,7 @@ div#video{
     height: 450px;
     left: 2050px;
     top: 2050px;
-    background:rgb(0, 152, 158);
+    background:rgb(255,255,255);
 
 }
 div#video1{
@@ -74,7 +107,7 @@ div#video1{
     height: 450px;
     left: 2050px;
     top: 2050px;*/
-    background:rgb(0, 152, 158);
+    background:rgb(255, 255, 255);
 
 }
 
@@ -89,10 +122,14 @@ div#vid1{
 
 div#Titulo h1{
     text-align: center;
+    color: #000000;
+
+}
+div#Titulo1 h1{
+    text-align: center;
     color: #FFFFFF;
 
 }
-
 
 /*div#titulo{
     

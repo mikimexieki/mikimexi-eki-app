@@ -1,0 +1,25 @@
+div#principal{
+    position: relative;
+    margin: auto;
+    width: 1350px;
+    height: 1050px;
+    background-color:rgb(255, 146, 70);
+}
+div#blockleft{
+    position: absolute;
+    float: left;
+    width: 150px;
+    height: 1050px;
+    background-color:rgb(0, 152, 158);
+}
+div#texto{
+    
+    margin: auto;
+    width: 1050px;
+    height: 1050px;
+    background-color: rgb(255, 255, 255);
+}
+div#texto h1{
+    text-align: center;
+    color:rgb(0, 0, 0);
+}

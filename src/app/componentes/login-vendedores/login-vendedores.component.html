@@ -24,7 +24,7 @@
                   <div class="card-header">
                     <div class="card-body">
                       <div class="form-group">
-                         <label for="rfc">RFC</label>
+                         <label for="rfc">Usuario</label>
                         <input type="text" name="rfc" class="form-control" class="form-control" #rfc="ngModel"
                           [(ngModel)]="vendedor.rfc">
                       </div>
@@ -78,11 +78,11 @@
                       </div>
 
                       <div class="form-group">
-                        <label for="rfc">RFC</label>
+                        <label for="rfc">Usuario</label>
                         <input type="text" name="rfc" class="form-control" #rfc="ngModel" [(ngModel)]="vendedor.rfc"
                           [ngClass]="{'is-invalid' : rfc.errors && rfc.touched}" required minlength="2">
                         <div [hidden]="!rfc.errors?.required" class="invalid-feedback">
-                          RFC Requerido
+                          Usuario Requerido
                         </div>
                         <div [hidden]="!rfc.errors?.minlength" class="invalid-feedback">
                           Debe de contener al menos 2 caracteres
@@ -108,7 +108,7 @@
                           [(ngModel)]="vendedor.password"
                           [ngClass]="{'is-invalid' : password.errors && password.touched}" required minlength="2">
                         <div [hidden]="!password.errors?.required" class="invalid-feedback">
-                          Apellido Requerido
+                          Contraseña Requerida
                         </div>
                         <div [hidden]="!password.errors?.minlength" class="invalid-feedback">
                           Debe de contener al menos 2 caracteres
@@ -121,7 +121,7 @@
                           [(ngModel)]="vendedor.telefono"
                           [ngClass]="{'is-invalid' : telefono.errors && telefono.touched}" required>
                         <div [hidden]="!telefono.errors?.required" class="invalid-feedback">
-                          Saldo Requerido
+                          Teléfono Requerido
                         </div>
                       </div>
 

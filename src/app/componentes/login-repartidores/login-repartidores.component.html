@@ -23,7 +23,7 @@
                 <div class="card">
                   <div class="card-header">
                     <div class="card-body">
-                      <div class="form-group"><label for="email">Licencia</label>
+                      <div class="form-group"><label for="email">Usuario</label>
                         <input type="licencia" name="licencia" class="form-control" class="form-control" #licencia="ngModel"
                           [(ngModel)]="repartidor.licencia">
                       </div>
@@ -96,7 +96,7 @@
                           .password"
                           [ngClass]="{'is-invalid' : password.errors && password.touched}" required minlength="2">
                         <div [hidden]="!password.errors?.required" class="invalid-feedback">
-                          Apellido Requerido
+                          Contraseña Requerida
                         </div>
                         <div [hidden]="!password.errors?.minlength" class="invalid-feedback">
                           Debe de contener al menos 2 caracteres
@@ -104,12 +104,12 @@
                       </div>
 
                       <div class="form-group">
-                        <label for="licencia">Licencia</label>
+                        <label for="licencia">Usuario</label>
                         <input type="text" name="licencia" class="form-control" #licencia="ngModel"
                           [(ngModel)]="repartidor.licencia"
                           [ngClass]="{'is-invalid' : licencia.errors && licencia.touched}" required minlength="2">
                         <div [hidden]="!licencia.errors?.required" class="invalid-feedback">
-                          Licencia Requerida
+                          Usuario Requerido
                         </div>
                         <div [hidden]="!licencia.errors?.minlength" class="invalid-feedback">
                           Debe de contener al menos 2 caracteres
@@ -122,7 +122,7 @@
                           [(ngModel)]="repartidor.telefono"
                           [ngClass]="{'is-invalid' : telefono.errors && telefono.touched}" required>
                         <div [hidden]="!telefono.errors?.required" class="invalid-feedback">
-                          Telefono Requerido
+                          Teléfono Requerido
                         </div>
                       </div>
 
